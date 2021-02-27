@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -6,16 +7,20 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    var brightness =  MediaQuery.of(context).platformBrightness;
+    var brightness = MediaQuery.of(context).platformBrightness;
     return AppBar(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      title: (brightness == Brightness.dark)?Image.network(
-        'https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/yt_logo_rgb_dark.png',
-        fit: BoxFit.cover,
-        width: 100.0,
-      ):Image.network('https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/youtube_logo.png',fit: BoxFit.cover,
-        width: 100.0,
-      ),
+      title: (brightness == Brightness.dark)
+          ? Image.network(
+              'https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/yt_logo_rgb_dark.png',
+              fit: BoxFit.cover,
+              width: 100.0,
+            )
+          : Image.network(
+              'https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/youtube_logo.png',
+              fit: BoxFit.cover,
+              width: 100.0,
+            ),
       actions: <Widget>[
         Padding(
             padding: EdgeInsets.only(right: 10.0),
@@ -43,7 +48,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 behavior: SnackBarBehavior.floating,
               ));
             },
-            child: Icon(Icons.notifications_none_sharp,color: Theme.of(context).accentColor,),
+            child: Icon(
+              Icons.notifications_none_sharp,
+              color: Theme.of(context).accentColor,
+            ),
           ),
         ),
         Padding(
@@ -57,7 +65,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 behavior: SnackBarBehavior.floating,
               ));
             },
-            child: Icon(Icons.search,color: Theme.of(context).accentColor,),
+            child: Icon(
+              Icons.search,
+              color: Theme.of(context).accentColor,
+            ),
           ),
         ),
         Padding(
@@ -71,7 +82,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   behavior: SnackBarBehavior.floating,
                 ));
               },
-              child: Icon(Icons.account_circle_outlined,color: Theme.of(context).accentColor,)),
+              child: Icon(
+                Icons.account_circle_outlined,
+                color: Theme.of(context).accentColor,
+              )),
         )
       ],
     );
@@ -79,7 +93,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class video extends StatelessWidget {
-  String title,image,subtitle;
+  String title, image, subtitle;
   video(this.title, this.image, this.subtitle);
 
   @override
@@ -92,22 +106,34 @@ class video extends StatelessWidget {
             // color: Colors.indigoAccent,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage('$image'),
-                    fit: BoxFit.fill
-                )
-            ),
+                    image: CachedNetworkImageProvider('$image'),
+                    fit: BoxFit.fill)),
           ),
           Container(
             height: 70,
             color: Theme.of(context).scaffoldBackgroundColor,
             child: ListTile(
               leading: CircleAvatar(
-                child: Text("a",style:TextStyle(fontSize: 30),),
+                child: Text(
+                  "a",
+                  style: TextStyle(fontSize: 30),
+                ),
               ),
-              title: Text("$title",textAlign: TextAlign.start,style: TextStyle(color: Theme.of(context).accentColor,fontWeight: FontWeight.bold),),
+              title: Text(
+                "$title",
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.bold),
+              ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top:5.0),
-                child: Text("$subtitle",style: TextStyle(color: Theme.of(context).accentColor,),),
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Text(
+                  "$subtitle",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
               ),
             ),
           )
@@ -118,7 +144,7 @@ class video extends StatelessWidget {
 }
 
 class History extends StatelessWidget {
-  String title,image,subtitle;
+  String title, image, subtitle;
   History(this.title, this.image, this.subtitle);
   @override
   Widget build(BuildContext context) {
@@ -131,20 +157,25 @@ class History extends StatelessWidget {
             // color: Colors.indigoAccent,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('$image'),
-                    fit: BoxFit.fill
-                )
-            ),
+                    image: AssetImage('$image'), fit: BoxFit.fill)),
           ),
           Container(
             height: 50,
             width: 140,
             color: Theme.of(context).scaffoldBackgroundColor,
             child: ListTile(
-              title: Text("$title",style: TextStyle(color: Theme.of(context).accentColor),),
+              title: Text(
+                "$title",
+                style: TextStyle(color: Theme.of(context).accentColor),
+              ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top:5.0),
-                child: Text("$subtitle",style: TextStyle(color: Theme.of(context).accentColor,),),
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Text(
+                  "$subtitle",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
               ),
             ),
           )

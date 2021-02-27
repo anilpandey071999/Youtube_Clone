@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube/homepage.dart';
@@ -60,7 +60,7 @@ class _SplachScreenState extends State<SplachScreen> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage('https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/logo.png'),
+              image: CachedNetworkImageProvider('https://raw.githubusercontent.com/anilpandey071999/Youtube_Clone/main/images/logo.png'),
               alignment: AlignmentDirectional.center,
               // fit: BoxFit.fitHeight
             ),
